@@ -23,6 +23,8 @@ public class Form1 extends javax.swing.JFrame {
     ListClass arreglos = new ListClass();
     FileLoader fileManager = new FileLoader();
     String texto;
+    String[] lineas;
+    String valores[];
     /**
      * Creates new form Form1
      */
@@ -120,7 +122,7 @@ public class Form1 extends javax.swing.JFrame {
             texto = fileManager.leerArchivo(jTextField1.getText());
             texto = texto.substring(4);
             JOptionPane.showMessageDialog(null,"Archivo leido");
-            this.arreglos.llenarEstructuras(texto);
+                this.arreglos.llenarEstructuras(texto);
             jButton3.setEnabled(true);
         }
         
@@ -130,12 +132,44 @@ public class Form1 extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         GraphViz grafo = new GraphViz();
         try {
-            String[] Datos=new String[3];
-            Datos[0]="a";
-             Datos[1]="b";
-              Datos[2]="c";
-            grafo.createDemoGraph(Datos,"Queue");
-            grafo.GuardarGrafo();
+                lineas = texto.split("\r\n");
+        for (int i = 0; i < lineas.length; i++) {
+            if (i != lineas.length - 1) {
+                valores = lineas[i+1].split(" ");
+            }
+            
+            
+            if(null!=lineas[i]) switch (lineas[i]) {
+                case "stack":
+                        String[] Datos=new String[arreglos.pila.size()];
+                        for (int j = 0; j < Datos.length; j++) {
+                        Datos[i]=arreglos.pila.pop();
+                    }
+                        grafo.createDemoGraph(Datos,"Stack");
+                        grafo.GuardarGrafo();
+                    break;
+                case "queue":
+                        String[] DatosC=new String[arreglos.cola.size()];
+                        for (int j = 0; j < DatosC.length; j++) {
+                        DatosC[i]=arreglos.cola.dequeue();
+                    }
+                        grafo.createDemoGraph(DatosC,"Queue");
+                        grafo.GuardarGrafo();
+                    break;
+                case "linkedlist":
+                    arreglos.listaEnlazada.graficar("C:\\Users\\garya\\Desktop");
+                    break;
+                case "circularlinkedlist":
+                    arreglos.listaCircular.graficar("C:\\Users\\garya\\Desktop");
+                    break;
+                case "doublelinkedlist":
+                   arreglos.listaDobleEnlazada.graficar("C:\\Users\\garya\\Desktop");
+                    break;
+                case "btree":
+                              arreglos.arbol.graficar("C:\\Users\\garya\\Desktop");
+                    break;
+            }
+        }
         } catch (IOException ex) {
             Logger.getLogger(Form1.class.getName()).log(Level.SEVERE, null, ex);
         }

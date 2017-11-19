@@ -27,7 +27,7 @@ public class GraphViz {
            g = graph("eje1").directed().with(Lista);
        }
        else if("Queue".equals(tipo)){
-            Node Lista=node("Queue").with(Records.mOf((Datos)));
+            Node Lista=node("Queue").with(Records.mOf((Datos))) ;
            g = graph("eje1").directed().with(Lista);
        }
         

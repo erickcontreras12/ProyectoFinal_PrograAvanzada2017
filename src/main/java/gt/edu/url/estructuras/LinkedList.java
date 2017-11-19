@@ -1,5 +1,14 @@
 package gt.edu.url.estructuras;
 
+import guru.nidi.graphviz.engine.Format;
+import guru.nidi.graphviz.engine.Graphviz;
+import guru.nidi.graphviz.model.MutableGraph;
+import guru.nidi.graphviz.parse.Parser;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 
 /**
  * Implementacion de lista enlazada utilizando generics
@@ -32,7 +41,57 @@ public class LinkedList<E> implements Stack<E>, Queue<E>{
 		public void setNext(Node<E> next) {
 			this.next = next;
 		}
-	}
+    private String getCodigoInterno() {
+        String etiqueta;
+        if(next==null){
+            etiqueta="nodo"+element+" [ label =\""+element+"\"];\n";
+        }else{
+            etiqueta="nodo"+next.element+" [ label =\"<C0>|"+next.element+"|<C1>\"];\n";
+        }
+        if(next!=null){
+            etiqueta=etiqueta + next.getCodigoInterno() +
+               "nodo"+element+"->nodo"+next.element+"\n";
+        }
+        return etiqueta;
+    }
+    private String getCodigoGraphviz() {
+        return "digraph grafica{\n" +
+               "rankdir=TB;\n" +
+               "node [shape = record, style=filled, fillcolor=seashell2];\n"+
+                getCodigoInterno()+
+                "}\n";
+    }
+        public void graficar(String path) {
+        FileWriter fichero = null;
+        PrintWriter escritor;
+        try
+        {
+            fichero = new FileWriter("aux_graficoSimple.dot");
+            escritor = new PrintWriter(fichero);
+            escritor.print(getCodigoGraphviz());
+        } 
+        catch (Exception e){
+            System.err.println("Error al escribir el archivo aux_grafico.dot");
+        }finally{
+           try {
+                if (null != fichero)
+                    fichero.close();
+           }catch (Exception e2){
+               System.err.println("Error al cerrar el archivo aux_grafico.dot");
+           } 
+        }                        
+        try{
+         File file = new File("aux_graficoSimple.dot");
+	FileInputStream fis = null;		
+	fis = new FileInputStream(file);
+	
+        MutableGraph g = Parser.read(fis);
+	Graphviz.fromGraph(g).width(700).render(Format.PNG).toFile(new File("C:\\Users\\garya\\Desktop\\grafoPrueba.png"));
+        } catch (Exception ex) {
+            System.err.println("Error al generar la imagen para el archivo aux_grafico.dot");
+        }            
+    }
+ }
 
 	private Node<E> head = null;
 	private Node<E> tail = null;
@@ -62,7 +121,7 @@ public class LinkedList<E> implements Stack<E>, Queue<E>{
 	public void addLast(E e) {
 		Node<E> newest = new Node<>(e, null);
 		if(isEmpty())
-			head = new Node<>(e, head);
+			head = newest;
 		else
 			tail.setNext(newest);
 		tail = newest;
@@ -106,6 +165,8 @@ public class LinkedList<E> implements Stack<E>, Queue<E>{
 	public E dequeue() {
 		return removeFirst();
 	}
-	
+	 public void graficar(String path) {
+        head.graficar(path);
+    }
 	
 }
