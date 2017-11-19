@@ -15,13 +15,18 @@ public class ListClass {
     public LinkedList<String> listaEnlazada = new LinkedList<String>();
     public CircularLinkedList<String> listaCircular = new CircularLinkedList<String>();
     public DoubleLinkedList<String> listaDobleEnlazada = new DoubleLinkedList<String>();
+    public LinkedBinaryTree<String> arbol = new LinkedBinaryTree<String>();
+    Position<String> p;
     String[] lineas;
     String valores[];
     
     public void llenarEstructuras(String texto){
         lineas = texto.split("\r\n");
         for (int i = 0; i < lineas.length; i++) {
-            valores = lineas[i+1].split(" ");
+            if (i != lineas.length - 1) {
+                valores = lineas[i+1].split(" ");
+            }
+            
             
             if(null!=lineas[i]) switch (lineas[i]) {
                 case "stack":
@@ -31,12 +36,16 @@ public class ListClass {
                     this.addQueue(valores);
                     break;
                 case "linkedlist":
+                    this.addLinkedList(valores);
                     break;
                 case "circularlinkedlist":
+                    this.addCircularLinkedList(valores);
                     break;
                 case "doublelinkedlist":
+                    this.addDoubleLinkedList(valores);
                     break;
                 case "btree":
+                    this.addBinaryTree(valores);
                     break;
             }
         }
@@ -61,14 +70,25 @@ public class ListClass {
     }
     
     public void addCircularLinkedList(String[] data){
-        
+        for (int i = 0; i < data.length; i++) {
+            listaCircular.addLast(data[i]);
+        }
     }
     
     public void addDoubleLinkedList(String[] data){
-        
+        for (int i = 1; i < data.length; i++) {
+            listaDobleEnlazada.addLast(data[i]);
+        }
     } 
     
     public void addBinaryTree(String[] data){
-        
+        int cont = 1;
+        p = arbol.addRoot(data[0]);
+        while(cont!=data.length){
+            arbol.addLeft(p,data[cont]);
+            cont++;
+            p = arbol.addRight(p,data[cont]);
+            cont++;
+        }
     }
 }

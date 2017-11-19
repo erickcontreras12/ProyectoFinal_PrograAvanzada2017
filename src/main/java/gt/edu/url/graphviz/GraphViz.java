@@ -29,6 +29,10 @@ public class GraphViz {
         Graph g = graph("eje1").with(nodo0);
         Graphviz.fromGraph(g).width(200).render(Format.PNG).toFile(new File("C:\\Users\\Erick Contreras\\Desktop\\LabFinal_ErickContreras1009017\\grafo1.png"));
     }
+    
+    public void createNodeFromStack(){
+        
+    }
 	
     public void createDemoFromDot() throws IOException {
 	File file = new File("");
