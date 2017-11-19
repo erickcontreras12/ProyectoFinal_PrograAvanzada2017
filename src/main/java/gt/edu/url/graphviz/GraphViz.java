@@ -19,19 +19,23 @@ import guru.nidi.graphviz.parse.Parser;
 
 //COLAAAA y si agrego turn( despues de "Records.of(" se hace pilaa
 public class GraphViz {
-    public void createDemoGraph() throws IOException{
+     Graph g =null;
+    public void createDemoGraph(String[] Datos,String tipo) throws IOException{
 	//Graph g = graph("example1").with(node("a").link(node("b")));
-        String[] valores = new String[4];
-        for (int i = 0; i < valores.length; i++) {
-            valores[i]= "" + i+1;
-        }
-        Node nodo0 = node("node0").with(Records.of(rec("f0", valores[0]), rec("f1", "2"), rec("f2", ""), rec("f3", ""), rec("f4", "")));
-        Graph g = graph("eje1").with(nodo0);
-        Graphviz.fromGraph(g).width(200).render(Format.PNG).toFile(new File("C:\\Users\\Erick Contreras\\Desktop\\LabFinal_ErickContreras1009017\\grafo1.png"));
+       if(tipo=="Stack"){
+           Node Lista=node("Stack").with(Records.of(turn(Datos)));
+           g = graph("eje1").directed().with(Lista);
+       }
+       else if(tipo=="Queue"){
+            Node Lista=node("Queue").with(Records.mOf((Datos)));
+           g = graph("eje1").directed().with(Lista);
+       }
+        
+        
     }
     
-    public void createNodeFromStack(){
-        
+    public void GuardarGrafo() throws IOException{
+        Graphviz.fromGraph(g).width(200).render(Format.PNG).toFile(new File("C:\\Users\\garya\\Desktop\\eje1.PNG"));
     }
 	
     public void createDemoFromDot() throws IOException {

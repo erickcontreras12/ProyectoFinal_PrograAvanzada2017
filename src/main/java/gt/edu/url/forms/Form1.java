@@ -130,7 +130,12 @@ public class Form1 extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         GraphViz grafo = new GraphViz();
         try {
-            grafo.createDemoGraph();
+            String[] Datos=new String[3];
+            Datos[0]="a";
+             Datos[1]="b";
+              Datos[2]="c";
+            grafo.createDemoGraph(Datos,"Queue");
+            grafo.GuardarGrafo();
         } catch (IOException ex) {
             Logger.getLogger(Form1.class.getName()).log(Level.SEVERE, null, ex);
         }
