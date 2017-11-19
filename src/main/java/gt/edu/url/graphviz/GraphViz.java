@@ -22,11 +22,11 @@ public class GraphViz {
      Graph g =null;
     public void createDemoGraph(String[] Datos,String tipo) throws IOException{
 	//Graph g = graph("example1").with(node("a").link(node("b")));
-       if(tipo=="Stack"){
+       if("Stack".equals(tipo)){
            Node Lista=node("Stack").with(Records.of(turn(Datos)));
            g = graph("eje1").directed().with(Lista);
        }
-       else if(tipo=="Queue"){
+       else if("Queue".equals(tipo)){
             Node Lista=node("Queue").with(Records.mOf((Datos)));
            g = graph("eje1").directed().with(Lista);
        }
