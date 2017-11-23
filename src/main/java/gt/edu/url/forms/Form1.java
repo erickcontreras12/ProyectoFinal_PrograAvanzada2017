@@ -52,7 +52,7 @@ public class Form1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Erick Contreas 1009017");
+        jLabel1.setText("Erick Contreras 1009017");
 
         jLabel2.setText("Gary Morán      1062917");
 

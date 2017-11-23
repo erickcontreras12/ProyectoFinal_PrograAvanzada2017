@@ -1,19 +1,13 @@
 digraph grafica{
 rankdir=TB;
 node [shape = record, style=filled, fillcolor=seashell2];
-nodo1 [ label ="<C0>|1|<C1>"];
-nodoa [ label ="a"];
-nodo1->nodoa
-nodo2 [ label ="<C0>|2|<C1>"];
-nodob [ label ="b"];
-nodo2->nodob
-nodoc [ label ="<C0>|c|<C1>"];
-nodo3 [ label ="3"];
-nodoc->nodo3
-nodo4 [ label ="<C0>|4|<C1>"];
-nodo7 [ label ="7"];
-nodo4->nodo7
-nodoc->nodo4
-nodo2->nodoc
-nodo1->nodo2
+nodo68 [ label ="<C0>|68|<C1>"];
+nodo12 [ label ="12"];
+nodo68->nodo12
+nodo29 [ label ="<C0>|29|<C1>"];
+nodo1 [ label ="1"];
+nodo29->nodo1
+nodo43 [ label ="43"];
+nodo29->nodo43
+nodo68->nodo29
 }

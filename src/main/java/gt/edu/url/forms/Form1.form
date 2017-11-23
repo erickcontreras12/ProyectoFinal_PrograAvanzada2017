@@ -91,7 +91,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Erick Contreas 1009017"/>
+        <Property name="text" type="java.lang.String" value="Erick Contreras 1009017"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
