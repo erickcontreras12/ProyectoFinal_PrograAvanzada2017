@@ -14,6 +14,7 @@ public class CircularLinkedList<E> {
 	private static class Node<E>{
 		private E element;
 		private Node<E> next;
+                        int repeticiones=0;
 		public Node(E element, Node<E> next) {
 			super();
 			this.element = element;
@@ -28,35 +29,43 @@ public class CircularLinkedList<E> {
 		public void setNext(Node<E> next) {
 			this.next = next;
 		}
-     private String getCodigoInterno() {
-         Node save;
+     private String getCodigoInterno(int size,int repeticiones) {
         String etiqueta;
-        if(next.getNext()==next){
+        if(repeticiones==size+1){
             etiqueta="nodo"+element+" [ label =\""+element+"\"];\n";
         }else{
-             etiqueta="nodo"+next.element+" [ label =\"<C0>|"+next.element+"|<C1>\"];\n";
+            if(repeticiones==0){
+                etiqueta="nodo"+element+" [ label =\""+element+"\"];\n";
+                repeticiones++;
+            }
+            else{
+               etiqueta="nodo"+next.element+" [ label =\"<C0>|"+next.element+"|<C1>\"];\n";
+               repeticiones++;
+            }
+
         }
-        if(next!=null){
-            etiqueta=etiqueta + next.getCodigoInterno() +
+        if(next!=null && repeticiones!=size+1 ){
+            
+            etiqueta=etiqueta + next.getCodigoInterno(size,repeticiones) +
                "nodo"+element+"->nodo"+next.element+"\n";
         }
         return etiqueta;
     }
-     private String getCodigoGraphviz() {
+     private String getCodigoGraphviz(int size) {
         return "digraph grafica{\n" +
                "rankdir=TB;\n" +
                "node [shape = record, style=filled, fillcolor=seashell2];\n"+
-                getCodigoInterno()+
+                getCodigoInterno(size,repeticiones)+
                 "}\n";
     }
-    public void graficar(String path) {
+    public void graficar(String path,int size) {
         FileWriter fichero = null;
         PrintWriter escritor;
         try
         {
             fichero = new FileWriter("aux_grafico1.dot");
             escritor = new PrintWriter(fichero);
-            escritor.print(getCodigoGraphviz());
+            escritor.print(getCodigoGraphviz(size));
         } 
         catch (Exception e){
             System.err.println("Error al escribir el archivo aux_grafico.dot");
@@ -131,6 +140,6 @@ public class CircularLinkedList<E> {
 		return head.getElement();
 	}
           public void graficar(String path) {
-        tail.graficar(path);
+        header.getNext().graficar(path,size);
     }
 }

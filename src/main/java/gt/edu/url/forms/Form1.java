@@ -143,7 +143,7 @@ public class Form1 extends javax.swing.JFrame {
                 case "stack":
                         String[] Datos=new String[arreglos.pila.size()];
                         for (int j = 0; j < Datos.length; j++) {
-                        Datos[i]=arreglos.pila.pop();
+                        Datos[j]=arreglos.pila.pop();
                     }
                         grafo.createDemoGraph(Datos,"Stack");
                         grafo.GuardarGrafo();
@@ -151,7 +151,7 @@ public class Form1 extends javax.swing.JFrame {
                 case "queue":
                         String[] DatosC=new String[arreglos.cola.size()];
                         for (int j = 0; j < DatosC.length; j++) {
-                        DatosC[i]=arreglos.cola.dequeue();
+                        DatosC[j]=arreglos.cola.dequeue();
                     }
                         grafo.createDemoGraph(DatosC,"Queue");
                         grafo.GuardarGrafo();

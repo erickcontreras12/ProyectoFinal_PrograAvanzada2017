@@ -15,6 +15,7 @@ public class DoubleLinkedList<E> {
 		private E element;
 		private Node<E> prev;//Anterior
 		private Node<E> next;//Siguiente
+                int repeticiones=0;
 
 		public Node(E e, Node<E> p, Node<E> n) {
 			element = e;
@@ -42,15 +43,22 @@ public class DoubleLinkedList<E> {
 			this.next = next;
 		}
        private String getCodigoInterno() {
-        String etiqueta;
+        String etiqueta="";
         if(next==null){
             etiqueta="nodo"+element+" [ label =\""+element+"\"];\n";
         }else{
-            etiqueta="nodo"+next.element+" [ label =\"<C0>|"+next.element+"|<C1>\"];\n";
+            if(repeticiones==0){
+                etiqueta="nodo"+element+" [ label =\""+element+"\"];\n";
+            }else{
+                 etiqueta="nodo"+next.element+" [ label =\"<C0>|"+next.element+"|<C1>\"];\n";
+            }
+           
         }
         if(next!=null){
+            repeticiones++;
             etiqueta=etiqueta + next.getCodigoInterno() +
                "nodo"+element+"->nodo"+next.element+"\n"+"nodo"+next.element+"->nodo"+element+"\n";
+            
         }
         return etiqueta;
     }
@@ -144,10 +152,12 @@ public class DoubleLinkedList<E> {
 	}
 	
 	private void addBetween(E e, Node<E> predecessor, Node<E> successor) {
-		Node<E> newest = new Node<>(e, predecessor, successor);
+           
+                Node<E> newest = new Node<>(e, predecessor, successor);
 		predecessor.setNext(newest);
 		successor.setPrev(newest);
 		size++;
+		
 	}
 	
 	private E remove(Node<E> node) {
@@ -159,7 +169,7 @@ public class DoubleLinkedList<E> {
 		return node.getElement( );
 	}
           public void graficar(String path) {
-        header.graficar(path);
+        header.getNext().graficar(path);
     }
 
 }

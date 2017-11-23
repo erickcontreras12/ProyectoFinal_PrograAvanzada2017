@@ -27,6 +27,7 @@ public class LinkedList<E> implements Stack<E>, Queue<E>{
 	private static class Node<E>{
 		private E element; //Valor
 		private Node<E> next; //Puntero en la lista
+                int repeticiones=0;
 		public Node(E element, Node<E> next) {
 			super();
 			this.element = element;
@@ -46,11 +47,18 @@ public class LinkedList<E> implements Stack<E>, Queue<E>{
         if(next==null){
             etiqueta="nodo"+element+" [ label =\""+element+"\"];\n";
         }else{
-            etiqueta="nodo"+next.element+" [ label =\"<C0>|"+next.element+"|<C1>\"];\n";
+            if(repeticiones==0){
+                etiqueta="nodo"+element+" [ label =\""+element+"\"];\n";
+            }
+            else{
+                 etiqueta="nodo"+next.element+" [ label =\"<C0>|"+next.element+"|<C1>\"];\n";
+            }
+           
         }
         if(next!=null){
             etiqueta=etiqueta + next.getCodigoInterno() +
                "nodo"+element+"->nodo"+next.element+"\n";
+            repeticiones++;
         }
         return etiqueta;
     }

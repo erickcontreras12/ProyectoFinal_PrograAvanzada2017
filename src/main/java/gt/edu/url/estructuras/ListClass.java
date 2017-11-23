@@ -76,7 +76,7 @@ public class ListClass {
     }
     
     public void addDoubleLinkedList(String[] data){
-        for (int i = 1; i < data.length; i++) {
+        for (int i = 0; i < data.length; i++) {
             listaDobleEnlazada.addLast(data[i]);
         }
     } 
