@@ -8,6 +8,8 @@ nodob [ label ="b"];
 nodoc [ label ="c"];
 nodo3 [ label ="3"];
 nodo4 [ label ="4"];
+nodo7 [ label ="7"];
+nodo4->nodo7
 nodo3->nodo4
 nodoc->nodo3
 nodob->nodoc

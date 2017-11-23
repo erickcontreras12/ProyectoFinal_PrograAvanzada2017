@@ -170,16 +170,16 @@ public class Form1 extends javax.swing.JFrame {
                         for (int j = 0; j < Datos.length; j++) {
                         Datos[j]=arreglos.pila.pop();
                     }
-                        grafo.createDemoGraph(Datos,"Stack");
-                        grafo.GuardarGrafo(path);
+                        grafo.createDemoGraph(Datos,"Stack",path);
+                       // grafo.GuardarGrafo(path);
                     break;
                 case "queue":
                         String[] DatosC=new String[arreglos.cola.size()];
                         for (int j = 0; j < DatosC.length; j++) {
                         DatosC[j]=arreglos.cola.dequeue();
                     }
-                        grafo.createDemoGraph(DatosC,"Queue");
-                        grafo.GuardarGrafo(path);
+                        grafo.createDemoGraph(DatosC,"Queue",path);
+                      //  grafo.GuardarGrafo(path);
                     break;
                 case "linkedlist":
                     arreglos.listaEnlazada.graficar(path);

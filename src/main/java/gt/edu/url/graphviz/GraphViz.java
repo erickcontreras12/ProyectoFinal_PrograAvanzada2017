@@ -20,15 +20,17 @@ import guru.nidi.graphviz.parse.Parser;
 //COLAAAA y si agrego turn( despues de "Records.of(" se hace pilaa
 public class GraphViz {
      Graph g =null;
-    public void createDemoGraph(String[] Datos,String tipo) throws IOException{
+    public void createDemoGraph(String[] Datos,String tipo,String path) throws IOException{
 	//Graph g = graph("example1").with(node("a").link(node("b")));
        if("Stack".equals(tipo)){
            Node Lista=node("Stack").with(Records.of(turn(Datos)));
            g = graph("eje1").directed().with(Lista);
+           Graphviz.fromGraph(g).width(200).render(Format.PNG).toFile(new File(path+"\\eje1.PNG"));
        }
        else if("Queue".equals(tipo)){
             Node Lista=node("Queue").with(Records.mOf((Datos))) ;
-           g = graph("eje1").directed().with(Lista);
+           g = graph("eje2").directed().with(Lista);
+           Graphviz.fromGraph(g).width(200).render(Format.PNG).toFile(new File(path+"\\eje2.PNG"));
        }
         
         

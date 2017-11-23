@@ -63,7 +63,7 @@ public class CircularLinkedList<E> {
         PrintWriter escritor;
         try
         {
-            fichero = new FileWriter("aux_grafico1.dot");
+            fichero = new FileWriter("aux_grafico1circular.dot");
             escritor = new PrintWriter(fichero);
             escritor.print(getCodigoGraphviz(size));
         } 
@@ -78,12 +78,12 @@ public class CircularLinkedList<E> {
            } 
         }                        
         try{
-         File file = new File("aux_grafico1.dot");
+         File file = new File("aux_grafico1circular.dot");
 	FileInputStream fis = null;		
 	fis = new FileInputStream(file);
 	
         MutableGraph g = Parser.read(fis);
-	Graphviz.fromGraph(g).width(700).render(Format.PNG).toFile(new File(path+"\\grafoPrueba.png"));
+	Graphviz.fromGraph(g).width(700).render(Format.PNG).toFile(new File(path+"\\grafoCircular.png"));
         } catch (Exception ex) {
             System.err.println("Error al generar la imagen para el archivo aux_grafico.dot");
         }            
