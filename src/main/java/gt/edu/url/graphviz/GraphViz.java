@@ -34,8 +34,8 @@ public class GraphViz {
         
     }
     
-    public void GuardarGrafo() throws IOException{
-        Graphviz.fromGraph(g).width(200).render(Format.PNG).toFile(new File("C:\\Users\\garya\\Desktop\\eje1.PNG"));
+    public void GuardarGrafo(String path) throws IOException{
+        Graphviz.fromGraph(g).width(200).render(Format.PNG).toFile(new File(path+"\\eje1.PNG"));
     }
 	
     public void createDemoFromDot() throws IOException {

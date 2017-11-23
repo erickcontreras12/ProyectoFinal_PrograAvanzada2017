@@ -84,11 +84,22 @@ public class ListClass {
     public void addBinaryTree(String[] data){
         int cont = 1;
         p = arbol.addRoot(data[0]);
-        while(cont!=data.length){
+        while(cont<data.length){
             arbol.addLeft(p,data[cont]);
-            cont++;
+            if(cont==data.length-1){
+                break;
+            }
+            else{
+                         cont++;
+            }
             p = arbol.addRight(p,data[cont]);
-            cont++;
+            if(cont==data.length-1){
+                break;
+            }
+            else{
+                 cont++;  
+            }
+         
         }
     }
 }

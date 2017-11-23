@@ -1,29 +1,29 @@
 digraph grafica{
 rankdir=TB;
 node [shape = record, style=filled, fillcolor=seashell2];
+nodo1 [ label ="1"];
 nodoa [ label ="a"];
+nodo2 [ label ="2"];
 nodob [ label ="b"];
 nodoc [ label ="c"];
-nodod [ label ="d"];
-nodoe [ label ="e"];
-nodof [ label ="f"];
-nodog [ label ="g"];
-nodoh [ label ="h"];
+nodo3 [ label ="3"];
+nodo4 [ label ="4"];
+nodo7 [ label ="7"];
 nodonull [ label ="null"];
-nodoh->nodonull
-nodonull->nodoh
-nodog->nodoh
-nodoh->nodog
-nodof->nodog
-nodog->nodof
-nodoe->nodof
-nodof->nodoe
-nodod->nodoe
-nodoe->nodod
-nodoc->nodod
-nodod->nodoc
+nodo7->nodonull
+nodonull->nodo7
+nodo4->nodo7
+nodo7->nodo4
+nodo3->nodo4
+nodo4->nodo3
+nodoc->nodo3
+nodo3->nodoc
 nodob->nodoc
 nodoc->nodob
-nodoa->nodob
-nodob->nodoa
+nodo2->nodob
+nodob->nodo2
+nodoa->nodo2
+nodo2->nodoa
+nodo1->nodoa
+nodoa->nodo1
 }

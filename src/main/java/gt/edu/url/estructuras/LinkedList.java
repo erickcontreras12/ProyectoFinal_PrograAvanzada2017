@@ -94,7 +94,7 @@ public class LinkedList<E> implements Stack<E>, Queue<E>{
 	fis = new FileInputStream(file);
 	
         MutableGraph g = Parser.read(fis);
-	Graphviz.fromGraph(g).width(700).render(Format.PNG).toFile(new File("C:\\Users\\garya\\Desktop\\grafoPrueba.png"));
+	Graphviz.fromGraph(g).width(700).render(Format.PNG).toFile(new File(path+"\\grafoPrueba.png"));
         } catch (Exception ex) {
             System.err.println("Error al generar la imagen para el archivo aux_grafico.dot");
         }            
