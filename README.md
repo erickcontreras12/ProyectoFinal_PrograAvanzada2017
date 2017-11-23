@@ -1,5 +1,4 @@
 # Documentacion ProyectoFinal_PrograAvanzada2017
-========================================================
 El proyecto final del curso de Programación Avanzada consistió en implementar los conocimientos adquiridos a lo largo del curso
 para ello, la solución al enunciado requeria implementar las estructuras dinamicas vistas en clase: Lista enlazada simple, Lista circular 
 enlazada, Lista doblemente enlazada y Arbol binario. De igual manera el problema pedía dos disciplinas de estructuras que son Pila y Cola 
